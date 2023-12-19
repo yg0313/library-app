@@ -45,3 +45,5 @@ build/
 /dist/
 /nbdist/
 /.nb-gradle/
+build/bootJarMainClassName
+*.lock

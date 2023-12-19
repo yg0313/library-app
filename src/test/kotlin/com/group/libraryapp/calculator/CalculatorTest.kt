@@ -43,7 +43,7 @@ class CalculatorTest {
         val calculator = Calculator(5)
 
         //when
-        calculator.add(3)
+        calculator.multiply(3)
 
         //then
         if (calculator.number != 15) {

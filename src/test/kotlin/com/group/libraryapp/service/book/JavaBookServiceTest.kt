@@ -19,7 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import java.lang.IllegalArgumentException
 
 @SpringBootTest
-class BookServiceTest @Autowired constructor(
+class JavaBookServiceTest @Autowired constructor(
     private val bookService: BookService,
     private val bookRepository: BookRepository,
     private val userRepository: UserRepository,

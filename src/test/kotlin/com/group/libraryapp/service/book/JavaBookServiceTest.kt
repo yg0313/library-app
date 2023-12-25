@@ -16,7 +16,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import java.lang.IllegalArgumentException
 
 @SpringBootTest
 class JavaBookServiceTest @Autowired constructor(
@@ -52,7 +51,7 @@ class JavaBookServiceTest @Autowired constructor(
     fun loanBookTest() {
         //given
         bookRepository.save(Book("이상한 나라의 엘리스"))
-        val savedUser = userRepository.save(User("김용관", null))
+        val savedUser = userRepository.save(User(name = "김용관", age = null))
         val request = BookLoanRequest("김용관", "이상한 나라의 엘리스")
 
         //when
@@ -71,8 +70,14 @@ class JavaBookServiceTest @Autowired constructor(
     fun loanBookFailTest() {
         //given
         bookRepository.save(Book("이상한 나라의 엘리스"))
-        val savedUser = userRepository.save(User("김용관", null))
-        userLoanHistoryRepository.save(UserLoanHistory(savedUser, "이상한 나라의 엘리스", false))
+        val savedUser = userRepository.save(User(name = "김용관", age = null))
+        userLoanHistoryRepository.save(
+            UserLoanHistory(
+                user = savedUser,
+                bookName = "이상한 나라의 엘리스",
+                isReturn = false
+            )
+        )
         val request = BookLoanRequest("김용관", "이상한 나라의 엘리스")
 
         //when & then
@@ -89,8 +94,14 @@ class JavaBookServiceTest @Autowired constructor(
     fun returnBookTest() {
         //given
         bookRepository.save(Book("이상한 나라의 엘리스"))
-        val savedUser = userRepository.save(User("김용관", null))
-        userLoanHistoryRepository.save(UserLoanHistory(savedUser, "이상한 나라의 엘리스", false))
+        val savedUser = userRepository.save(User(name = "김용관", age = null))
+        userLoanHistoryRepository.save(
+            UserLoanHistory(
+                user = savedUser,
+                bookName = "이상한 나라의 엘리스",
+                isReturn = false
+            )
+        )
         val request = BookReturnRequest("김용관", "이상한 나라의 엘리스")
 
         //when

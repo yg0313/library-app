@@ -2,6 +2,8 @@ package com.group.libraryapp.domain.user;
 
 import com.group.libraryapp.domain.book.Book;
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -52,10 +54,12 @@ public class User {
     targetHistory.doReturn();
   }
 
+  @NotNull
   public String getName() {
     return name;
   }
 
+  @Nullable //코틀린에서 널이 허용되는지 확인을 하게 해줌.
   public Integer getAge() {
     return age;
   }

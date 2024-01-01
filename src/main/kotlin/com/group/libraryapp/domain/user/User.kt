@@ -7,14 +7,15 @@ import javax.persistence.*
 
 @Entity
 class User(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
     var name: String,
     val age: Int? = null,
 
     @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val userLoanHistories: MutableList<UserLoanHistory> = mutableListOf()
+    val userLoanHistories: MutableList<UserLoanHistory> = mutableListOf(),
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
 ) {
 
     init {

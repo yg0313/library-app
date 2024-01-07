@@ -5,14 +5,14 @@ import javax.persistence.*
 
 @Entity
 class UserLoanHistory(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
-
     @ManyToOne
     val user: User,
     val bookName: String,
-    var status: UserLoanStatus = UserLoanStatus.LOANED
+    var status: UserLoanStatus = UserLoanStatus.LOANED,
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
 ) {
 
     fun doReturn(){

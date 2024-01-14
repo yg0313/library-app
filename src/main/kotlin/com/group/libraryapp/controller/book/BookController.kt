@@ -35,10 +35,14 @@ class BookController(
      * 대여중인 책의 권수.
      */
     @GetMapping("/book/loan")
-    fun countLoanedBook(): Int {
-        return bookService.countLoanedBook()
+    fun countLoanedBook(): Long {
+//        return bookService.countLoanedBook()
+        return bookService.countLoanedBookByQuery()
     }
 
+    /**
+     * 분야별 책의 권수.
+     */
     @GetMapping("/book/stat")
     fun getBookStatistics(): List<BookStatResponse>{
         return bookService.getBookStatistics()
